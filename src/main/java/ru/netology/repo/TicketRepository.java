@@ -2,19 +2,19 @@ package ru.netology.repo;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import ru.netology.domain.Ticket;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+
 
 
 @Data
-@NoArgsConstructor
+
 public class TicketRepository {
     private List<Ticket> travels = new ArrayList<>();
+    private Ticket comparator = new Ticket();
 
     public void save(Ticket travel) {
         travels.add(travel);
@@ -32,9 +32,6 @@ public class TicketRepository {
             }
         }
         return null;
-    }
-    public List<Ticket> findByFromTo(String from, String to){
-        return travels.stream().filter(e->(Objects.equals(e.getFrom(), from))&&(Objects.equals(e.getTo(), to))).collect(Collectors.toList());
     }
 
     public void removedById(int id) {

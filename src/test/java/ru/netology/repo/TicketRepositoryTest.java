@@ -36,5 +36,8 @@ class TicketRepositoryTest {
         repo.save(aeroflot);
         repo.save(aeroflot2);
     }
-
+    @Test
+    public void shouldFindAll() {
+        repo.findAll();
+    }
 }

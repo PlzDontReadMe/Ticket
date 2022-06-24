@@ -8,18 +8,33 @@ import ru.netology.repo.TicketRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.stream.Collectors;
+import java.util.Objects;
+
 
 @NoArgsConstructor
-
 public class ManagerTicket {
 
     private TicketRepository repo;
 
-
-    public List<Ticket> findByFromTo(String from, String to) {
-        repo.findAll();
-        return travels.stream().filter(e -> (!e.getFrom() == from) && (!e.getTo() == to)).collect(Collectors.toList());
+    public ManagerTicket(TicketRepository repo) {
+        this.repo = repo;
     }
 
+
+    public void add(Ticket travel) {
+       repo.save(travel);
+    }
+
+
+    public List<Ticket> findByFromTo(String from, String to) {
+        ArrayList<Ticket> result = new ArrayList<>();
+        for (Ticket travel : this.repo.findAll()) {
+            if ((Objects.equals(travel.getFrom(), from)) && (Objects.equals(travel.getTo(), to))) {
+                result.add(travel);
+            }
+        }
+        return result;
+    }
 }
+
+
