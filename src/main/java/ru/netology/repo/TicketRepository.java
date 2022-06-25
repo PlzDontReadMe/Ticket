@@ -14,7 +14,6 @@ import java.util.List;
 
 public class TicketRepository {
     private List<Ticket> travels = new ArrayList<>();
-    private Ticket comparator = new Ticket();
 
     public void save(Ticket travel) {
         travels.add(travel);
